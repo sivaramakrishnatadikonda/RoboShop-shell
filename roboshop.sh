@@ -8,8 +8,7 @@ for instance in $(INSTANCES[@])
 
 do
 
-INTANCE_ID=$(aws ec2 run-instances --image-id ami-09c813fb71547fc4f --instance-type t2.micro --security-group-ids sg-0063ebc81c5fcfe82
- --tag-specifications "ResourceType=instance,Tags=[{Key=Name, Value=chinna}]" --query "Instances[0].PrivateIpAddress" --output text)
+INTANCE_ID=$(aws ec2 run-instances --image-id ami-09c813fb71547fc4f --instance-type t2.micro --security-group-ids sg-0063ebc81c5fcfe82 --tag-specifications "ResourceType=instance,Tags=[{Key=Name, Value=chinna}]" --query "Instances[0].PrivateIpAddress" --output text)
 
 if [ $instance != "forntend" ]
 then 
