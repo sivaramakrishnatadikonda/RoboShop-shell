@@ -4,7 +4,7 @@ INSTANCES=("mongodb" "redis" "mysql" "rabbitmq" "catalogue" "forntend")
 ZONE_ID="Z066140621FS3C4YYVXA1"
 DOMAIN_NAME="tadikondadevops.site"
 
-for instance in $(INSTANCES[@])
+for instance in ${INSTANCES[@]}
 
 do
 
@@ -12,9 +12,9 @@ INTANCE_ID=$(aws ec2 run-instances --image-id ami-09c813fb71547fc4f --instance-t
 
 if [ $instance != "forntend" ]
 then 
-   IP=$(aws ec2 describe-instances --instance-ids i-0abcdef123456789 --query "Reservations[0].Instances[0].PrivateIpAddress" --output text)
+   IP=$(aws ec2 describe-instances --instance-ids $INTANCE_ID --query "Reservations[0].Instances[0].PrivateIpAddress" --output text)
  else 
-      IP=$(aws ec2 describe-instances --instance-ids i-0abcdef123456789 --query "Reservations[0].Instances[0].PublicIpAddress" --output text)
+      IP=$(aws ec2 describe-instances --instance-ids  $INTANCE_ID --query "Reservations[0].Instances[0].PublicIpAddress" --output text)
 
 fi
    echo " $intance IP address: $IP"
